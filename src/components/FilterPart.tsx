@@ -5,16 +5,16 @@ import Toggle from "./Toggle";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  margin: 20px 7%;
+  margin: 20px 5% 20px 7%;
 `;
 
 const Title = styled.div`
-  font-size: 17px;
+  font-size: 20px;
   font-weight: bold;
 `;
 
 const Message = styled.div`
-  font-size: 13px;
+  font-size: 16px;
 `;
 
 const FilterWrapper = styled.div`
