@@ -7,7 +7,30 @@ import {
   addMaterial,
   deleteMaterial,
 } from "../features/filterSlice";
-// import styled from "styled-components";
+
+import styled from "styled-components";
+import { AiFillCaretDown } from "react-icons/ai";
+
+const FilterTitle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7px;
+  padding: 7px;
+  border: 2px solid #939fa5;
+  border-radius: 4px;
+`;
+
+const FilterOptions = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 7px;
+  margin-top: 3px;
+  background: white;
+`;
 
 interface IOptions {
   [key: string]: string[];
@@ -34,6 +57,7 @@ const Select = ({ filtering }: { filtering: string }) => {
       filtering === "재료"
         ? dispatch(addMaterial(e.target.name))
         : dispatch(addMethod(e.target.name));
+
       return;
     }
 
@@ -44,13 +68,12 @@ const Select = ({ filtering }: { filtering: string }) => {
 
   return (
     <div>
-      <div onClick={toggleExpanded}>
-        <div>
-          {filtering} {filter.length ? `(${filter.length})` : ""}
-        </div>
-      </div>
+      <FilterTitle onClick={toggleExpanded}>
+        {filtering} {filter.length ? `(${filter.length})` : ""}{" "}
+        <AiFillCaretDown />
+      </FilterTitle>
       {expanded && (
-        <div>
+        <FilterOptions>
           {Options[filtering].map((method) => (
             <label htmlFor="one" className="block" key={method}>
               <input
@@ -59,42 +82,12 @@ const Select = ({ filtering }: { filtering: string }) => {
                 value={method}
                 onChange={handleCheckChange}
                 checked={filter.includes(method)}
-                // className="m-3 cursor-pointer"
               />
               {method}
             </label>
           ))}
-        </div>
+        </FilterOptions>
       )}
-      {/* <div onClick={toggleExpanded}>
-        <h6>PLATFORMS </h6>
-        <div className={`${expanded ? "up-arrow" : "down-arrow"}`}>
-          {selections.length
-            ? selections.map((name, i) => (
-                <span key={i}>
-                  {i ? ", " : null}
-                  {name}
-                </span>
-              ))
-            : "None selected"}
-        </div>
-      </div>
-      {expanded && (
-        <div className="border-gray-200 border border-solid">
-          {PLATFORMS.map((platform) => (
-            <label htmlFor="one" className="block" key={platform}>
-              <input
-                type="checkbox"
-                name={platform}
-                value={platform}
-                onChange={handleChange}
-                className="m-3 cursor-pointer"
-              />
-              {platform}
-            </label>
-          ))}
-        </div>
-      )} */}
     </div>
   );
 };

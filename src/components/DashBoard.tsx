@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Item from "./Item";
-import Select from "./Select";
+import FilterPart from "./FilterPart";
 
+import styled from "styled-components";
 import axios from "axios";
+
+const Container = styled.div`
+  padding: auto 30% auto 30%;
+`;
 
 export interface IData {
   id: number;
@@ -33,18 +38,15 @@ const DashBoard = () => {
     getItem();
   }, []);
   return (
-    <div>
+    <Container>
       <Header />
-      <h3>들어온 요청</h3>
-      <h4>파트너님에게 딱 맞는 요청서를 찾아보세요.</h4>
-      <Select filtering="가공방식" />
-      <Select filtering="재료" />
+      <FilterPart />
       <ul>
         {items?.map((item) => (
           <Item item={item} />
         ))}
       </ul>
-    </div>
+    </Container>
   );
 };
 
