@@ -9,6 +9,5 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
-//왜하는지 알아보기
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

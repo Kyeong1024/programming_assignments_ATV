@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+# ATEAMVENTURES ASSIGNMENT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This assignment was created based on this [Figma](https://www.figma.com/file/eUjS3RZDlexaD12MmwjZ7R/Ateamventures-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8?node-id=0%3A1).
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+This task created a dashboard page for the Manufacturer Matching Platform - CAPA.
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+See the section.
 
-### `npm run build`
+## Required
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 견적요청카드
+- 필터링
+- 토글
+- 빈화면
+- 모바일 대응
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Approach To Implementation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### [ Data ]
 
-### `npm run eject`
+- Used [json-server](https://github.com/typicode/json-server) with mock data as requests.json file.
+- [http://localhost:4000](http://localhost:4000)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### [ State management ]
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React-redux
+- Redux-toolkit
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### [ Style ]
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- styled-component
 
-## Learn More
+### [ Filtering ]
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 받아온 데이터에서 status가 상담중 표시된 것을 가장 최우선 순위로 두었습니다.
+- status는 Toggle로 on/off를 할 수 있습니다.
+- 재료와 가공법에서 각각 선택된 것은 모두 포함되게 filtering하였습니다.
+- 재료, 가공법 모두에서 선택된 것은 교집합으로 filtering되게 하였습니다.
+- 재료, 가공법 중 하나라도 선택된 것이 있으면 Reset이 버튼이 나타나며 클릭 시 filtering 선택지를 reset합니다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### [ Responsive Web Design ]
+
+- Media query를 사용하여 600px이하로 되는 경우 mobile 적용되도록 설정하였습니다.
+
+### [ Test ]
+
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) 를 바탕으로 테스트를 구현하였습니다.
