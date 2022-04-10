@@ -31,6 +31,10 @@ export const filterSlice = createSlice({
     changeStatus: (state) => {
       state.status = !state.status;
     },
+    reset: (state) => {
+      state.method = [];
+      state.material = [];
+    },
   },
 });
 
@@ -40,5 +44,6 @@ export const {
   addMaterial,
   deleteMaterial,
   changeStatus,
+  reset,
 } = filterSlice.actions;
 export default filterSlice.reducer;

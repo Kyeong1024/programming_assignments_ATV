@@ -1,8 +1,12 @@
 import React from "react";
 import Select from "./Select";
 import Toggle from "./Toggle";
+import { RootState } from "../app/store";
+import { useSelector, useDispatch } from "react-redux";
+import { reset } from "../features/filterSlice";
 
 import styled from "styled-components";
+import { AiOutlineReload } from "react-icons/ai";
 
 const Wrapper = styled.div`
   margin: 20px 5% 20px 7%;
@@ -32,7 +36,20 @@ const ToggleText = styled.span`
   font-size: 10px;
 `;
 
+const Reset = styled.div`
+  color: #2196f3;
+  font-weight: bold;
+`;
+
 const FilterPart = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector((state: RootState) => state.filter);
+  const filterLength = filter.material.length + filter.method.length;
+
+  const handleResetClick = () => {
+    dispatch(reset());
+  };
+
   return (
     <Wrapper>
       <Title>들어온 요청</Title>
@@ -40,6 +57,11 @@ const FilterPart = () => {
       <FilterWrapper>
         <Select filtering="가공방식" />
         <Select filtering="재료" />
+        {!!filterLength && (
+          <Reset onClick={handleResetClick}>
+            <AiOutlineReload /> 필터링 리셋
+          </Reset>
+        )}
         <ToggleWrapper>
           <Toggle />
           <ToggleText>상담중인 요청만 보기</ToggleText>

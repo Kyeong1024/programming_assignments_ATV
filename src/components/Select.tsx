@@ -19,12 +19,17 @@ const FilterTitle = styled.div`
   padding: 7px;
   border: 2px solid #939fa5;
   border-radius: 4px;
+
+  &:hover {
+    border: 2px solid #2196f3;
+  }
 `;
 
 const FilterOptions = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
+  z-index: 1;
   border: 1px solid black;
   border-radius: 4px;
   padding: 7px;

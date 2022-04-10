@@ -8,11 +8,15 @@ const Card = styled.div`
   width: 356px;
   height: 356px;
   flex-direction: column;
-  border: 1px solid black;
+  border: 2px solid #e5e5e5;
   justify-content: center;
   margin-bottom: 30px;
   padding: 10px;
   border-radius: 4px;
+
+  &:hover {
+    border: 2px solid #2196f3;
+  }
 `;
 
 const Header = styled.div``;
@@ -64,11 +68,14 @@ const Content = styled.div`
 `;
 
 const ContentText = styled.span`
+  margin-bottom: 5px;
   font-size: 14px;
 `;
+
 const ButtonWrapper = styled.div`
   margin-top: 30px;
 `;
+
 const RequestButton = styled.button`
   width: 108px;
   height: 32px;
@@ -77,6 +84,7 @@ const RequestButton = styled.button`
   border-radius: 4px;
   color: white;
 `;
+
 const ChattingButton = styled.button`
   width: 78px;
   height: 32px;
