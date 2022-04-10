@@ -42,6 +42,9 @@ const Reset = styled.div`
   font-weight: bold;
 `;
 
+const MATERIAL = "재료";
+const METHOD = "가공방식";
+
 const FilterPart = () => {
   const dispatch = useAppDispatch();
   const filter = useAppSelector((state: RootState) => state.filter);
@@ -56,8 +59,8 @@ const FilterPart = () => {
       <Title>들어온 요청</Title>
       <Message>파트너님에게 딱 맞는 요청서를 찾아보세요.</Message>
       <FilterWrapper>
-        <Select filtering="가공방식" />
-        <Select filtering="재료" />
+        <Select filtering={MATERIAL} />
+        <Select filtering={METHOD} />
         {!!filterLength && (
           <Reset onClick={handleResetClick} data-testid="reset">
             <AiOutlineReload /> 필터링 리셋

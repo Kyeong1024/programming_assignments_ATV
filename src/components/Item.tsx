@@ -96,13 +96,15 @@ const ChattingButton = styled.button`
   color: #2196f3;
 `;
 
+const IN_CONSULTATION = "상담중";
+
 const Item = ({ item }: { item: IData }) => {
   return (
     <Card key={item.id}>
       <Header>
         <Title>
           {item.title}
-          {item.status === "상담중" && <Status>{item.status}</Status>}
+          {item.status === IN_CONSULTATION && <Status>{item.status}</Status>}
         </Title>
         <Client>{item.client}</Client>
         <Date>{item.due}</Date>

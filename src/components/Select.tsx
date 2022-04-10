@@ -48,11 +48,13 @@ const Options: IOptions = {
   가공방식: ["밀링", "선반"],
 };
 
+const MATERIAL = "재료";
+
 const Select = ({ filtering }: { filtering: string }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const filter = useAppSelector((state: RootState) =>
-    filtering === "재료" ? state.filter.material : state.filter.method
+    filtering === MATERIAL ? state.filter.material : state.filter.method
   );
 
   const toggleExpanded = () => {
@@ -61,14 +63,14 @@ const Select = ({ filtering }: { filtering: string }) => {
 
   const handleCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      filtering === "재료"
+      filtering === MATERIAL
         ? dispatch(addMaterial(e.target.name))
         : dispatch(addMethod(e.target.name));
 
       return;
     }
 
-    filtering === "재료"
+    filtering === MATERIAL
       ? dispatch(deleteMaterial(e.target.name))
       : dispatch(deleteMethod(e.target.name));
   };
