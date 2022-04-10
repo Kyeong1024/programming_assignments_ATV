@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { RootState } from "../app/store";
-import { useSelector } from "react-redux";
-import Item from "./Item";
+
 import axios from "axios";
 import styled from "styled-components";
+
+import Item from "./Item";
+import { RootState } from "../app/store";
+import { useAppSelector } from "../app/hooks";
 
 export interface IData {
   id: number;
@@ -17,10 +19,11 @@ export interface IData {
   title: string;
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
   margin: auto 7%;
+  padding-left: 0px;
   justify-content: space-between;
 `;
 
@@ -37,8 +40,8 @@ const Empty = styled.div`
 const ItemList = () => {
   const [items, setItems] = useState<IData[]>([]);
   const [filteredItem, setFilteredItem] = useState<IData[] | null>(null);
-  const filter = useSelector((state: RootState) => state.filter);
-  const status = useSelector((state: RootState) => state.filter.status);
+  const filter = useAppSelector((state: RootState) => state.filter);
+  const status = useAppSelector((state: RootState) => state.filter.status);
   const filterLength = filter.material.length + filter.method.length;
 
   const selectItem = (items: IData[]) => {
@@ -93,12 +96,16 @@ const ItemList = () => {
 
   useEffect(() => {
     const getItem = async () => {
-      const { data }: { data: IData[] } = await axios.get(
-        "http://localhost:4000/requests"
-      );
+      try {
+        const { data }: { data: IData[] } = await axios.get(
+          "http://localhost:4000/requests"
+        );
 
-      setItems(data);
-      setFilteredItem(data);
+        setItems(data);
+        setFilteredItem(data);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     getItem();

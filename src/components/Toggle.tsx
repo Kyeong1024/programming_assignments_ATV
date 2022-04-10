@@ -1,9 +1,10 @@
 import React from "react";
-import { RootState } from "../app/store";
-import { useSelector, useDispatch } from "react-redux";
-import { changeStatus } from "../features/filterSlice";
 
 import styled from "styled-components";
+
+import { RootState } from "../app/store";
+import { useAppSelector, useAppDispatch } from "../app/hooks";
+import { changeStatus } from "../features/filterSlice";
 
 const CheckBoxWrapper = styled.div`
   position: relative;
@@ -52,8 +53,8 @@ const CheckBox = styled.input`
 `;
 
 const Toggle = () => {
-  const dispatch = useDispatch();
-  const status = useSelector((state: RootState) => state.filter.status);
+  const dispatch = useAppDispatch();
+  const status = useAppSelector((state: RootState) => state.filter.status);
 
   return (
     <CheckBoxWrapper>
@@ -62,6 +63,7 @@ const Toggle = () => {
         type="checkbox"
         defaultChecked={status}
         onChange={() => dispatch(changeStatus())}
+        data-testid="status"
       />
       <CheckBoxLabel htmlFor="checkbox" />
     </CheckBoxWrapper>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import Modal from "./Modal";
-import styled from "styled-components";
 import { AiOutlineMenu, AiFillBank } from "react-icons/ai";
+
+import styled from "styled-components";
+
+import Modal from "./Modal";
 
 const Common = styled.div`
   display: flex;

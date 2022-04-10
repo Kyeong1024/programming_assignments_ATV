@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { AiFillCaretDown } from "react-icons/ai";
+
+import styled from "styled-components";
+
 import { RootState } from "../app/store";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "../app/hooks";
 import {
   addMethod,
   deleteMethod,
@@ -8,10 +12,7 @@ import {
   deleteMaterial,
 } from "../features/filterSlice";
 
-import styled from "styled-components";
-import { AiFillCaretDown } from "react-icons/ai";
-
-const FilterTitle = styled.div`
+const FilterTitle = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,6 +20,7 @@ const FilterTitle = styled.div`
   padding: 7px;
   border: 2px solid #939fa5;
   border-radius: 4px;
+  background: white;
 
   &:hover {
     border: 2px solid #2196f3;
@@ -48,8 +50,8 @@ const Options: IOptions = {
 
 const Select = ({ filtering }: { filtering: string }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
-  const dispatch = useDispatch();
-  const filter = useSelector((state: RootState) =>
+  const dispatch = useAppDispatch();
+  const filter = useAppSelector((state: RootState) =>
     filtering === "재료" ? state.filter.material : state.filter.method
   );
 
@@ -79,7 +81,7 @@ const Select = ({ filtering }: { filtering: string }) => {
       </FilterTitle>
       {expanded && (
         <FilterOptions>
-          {Options[filtering].map((method) => (
+          {Options[filtering].map((method, i) => (
             <label htmlFor="one" className="block" key={method}>
               <input
                 type="checkbox"
@@ -87,6 +89,7 @@ const Select = ({ filtering }: { filtering: string }) => {
                 value={method}
                 onChange={handleCheckChange}
                 checked={filter.includes(method)}
+                data-testid={`option${i}`}
               />
               {method}
             </label>

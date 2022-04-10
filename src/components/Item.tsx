@@ -1,9 +1,10 @@
 import React from "react";
-import { IData } from "./ItemList";
 
 import styled from "styled-components";
 
-const Card = styled.div`
+import { IData } from "./ItemList";
+
+const Card = styled.li`
   display: flex;
   width: 356px;
   height: 356px;
@@ -97,7 +98,7 @@ const ChattingButton = styled.button`
 
 const Item = ({ item }: { item: IData }) => {
   return (
-    <Card>
+    <Card key={item.id}>
       <Header>
         <Title>
           {item.title}

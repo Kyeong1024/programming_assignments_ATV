@@ -1,8 +1,9 @@
 import React from "react";
-import Header from "./Header";
-import FilterPart from "./FilterPart";
 
 import styled from "styled-components";
+
+import Header from "./Header";
+import FilterPart from "./FilterPart";
 import ItemList from "./ItemList";
 
 const Container = styled.div`

@@ -1,12 +1,13 @@
 import React from "react";
-import Select from "./Select";
-import Toggle from "./Toggle";
-import { RootState } from "../app/store";
-import { useSelector, useDispatch } from "react-redux";
-import { reset } from "../features/filterSlice";
 
 import styled from "styled-components";
 import { AiOutlineReload } from "react-icons/ai";
+
+import Select from "./Select";
+import Toggle from "./Toggle";
+import { RootState } from "../app/store";
+import { useAppSelector, useAppDispatch } from "../app/hooks";
+import { reset } from "../features/filterSlice";
 
 const Wrapper = styled.div`
   margin: 20px 5% 20px 7%;
@@ -42,8 +43,8 @@ const Reset = styled.div`
 `;
 
 const FilterPart = () => {
-  const dispatch = useDispatch();
-  const filter = useSelector((state: RootState) => state.filter);
+  const dispatch = useAppDispatch();
+  const filter = useAppSelector((state: RootState) => state.filter);
   const filterLength = filter.material.length + filter.method.length;
 
   const handleResetClick = () => {
@@ -58,7 +59,7 @@ const FilterPart = () => {
         <Select filtering="가공방식" />
         <Select filtering="재료" />
         {!!filterLength && (
-          <Reset onClick={handleResetClick}>
+          <Reset onClick={handleResetClick} data-testid="reset">
             <AiOutlineReload /> 필터링 리셋
           </Reset>
         )}
