@@ -55,3 +55,16 @@ See the section.
 ### [ Test ]
 
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) 를 바탕으로 테스트를 구현하였습니다.
+- 구현 요소에 대한 Unit test를 진행하였습니다.
+
+## Thoughts
+
+기존에 JavaScript로만 작업을 하여 TypeScript에 대한 궁금증이 있었는데 이번 과제를 통해 TypeScript를 접해보게 되었습니다. 처음 쓰는 거라 처음에는 이걸 왜쓰지? 라는 생각이 들었는데 쓰면서 아 이래서 사람들이 이걸 쓰는 구나라고 느꼈습니다.
+
+TypeScript로 미리 자료형에 대한 것을 정해주어 실수를 미연에 방지하고 error가 발생하더라도 더 빠르게 찾을 수 있었습니다. 만약 복잡한 구조의 코드에서 TypeScript를 사용하면 효율성을 더 높일 수 있겠구나라는 생각이 들었습니다.
+
+데시보드를 구현하는데 있어 전반적으로 흥미롭게 진행하였습니다. filtering하는 부분이 재미있었으며 약간 효율성이 떨어지게 로직을 작성하여 아쉬웠습니다. 제출 후에도 수정할 예정입니다.
+
+전반적으로 과제는 재미있었으며 아쉬운 점도 있었습니다. TypeScript나 미디어 쿼리를 처음 접해본 것도 좋은 경험 이었습니다.
+
+감사합니다.
